@@ -8,38 +8,29 @@ int main(int argc, char const *argv[])
 
 	while(sticks > 0)
 	{
+		printf ("\033[0d\033[2J"); // clear console
 		printf("\nWe have %d\n", sticks);
 		if (round % 2 != 0)
 		{
 			printf("First player, input yout number of sticks: ");
 			scanf("%d", &choose);
-			if (choose > sticks || choose > 3 || choose < 1)
-			{
-				printf("Incorrect number of sticks\n");
-				continue;
-			}
-			else
-			{
-				sticks -= choose;
-				++round;
-				continue;
-			}
 		}
-		else if (round % 2 == 0)
+		else
 		{
 			printf("Second player, input yout number of sticks: ");
 			scanf("%d", &choose);
-			if (choose > sticks || choose > 3 || choose < 1)
-			{
-				printf("Incorrect number of sticks\n");
-				continue;
-			}
-			else
-			{
-				sticks -= choose;
-				++round;
-				continue;
-			}
+		}
+		
+		if (choose > sticks || choose > 3 || choose < 1)
+		{
+			printf("\nIncorrect number of sticks\n");
+			continue;
+		}
+		else
+		{
+			sticks -= choose;
+			++round;
+			continue;
 		}
 	}
 	if (round % 2 == 0)
