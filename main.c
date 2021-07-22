@@ -13,7 +13,7 @@ int main(int argc, char const *argv[])
 		if (sticks <= 0 && round % 2 == 0)
 		{
 			printf("\nSecond player win\n");
-			printf("Do you want play again(1-yes / 0-no): \n");
+			printf("Do you want play again(1-yes / 0-no): ");
 			scanf("%d", &play_again);
 			
 			if(play_again == 1)
