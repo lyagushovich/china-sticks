@@ -1,14 +1,51 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main(int argc, char const *argv[])
 {
 	int sticks = 10;
 	int round = 1;
 	int choose;
+	int play_again;
 
-	while(sticks > 0)
+	while(true)
 	{
-		printf ("\033[0d\033[2J"); // clear console
+		if (sticks <= 0 && round % 2 == 0)
+		{
+			printf("\nSecond player win\n");
+			printf("Do you want play again(1-yes / 0-no): \n");
+			scanf("%d", &play_again);
+			
+			if(play_again == 1)
+			{
+				sticks = 10;
+				round = 0;
+				continue;
+			}
+			else
+			{
+				break;
+			}
+		}
+		else if (sticks <= 0 && round % 2 != 0)
+		{
+			printf("\nFirst player win\n");
+			printf("Do you want play again(1-yes / 0-no): ");
+			scanf("%d", &play_again);
+			
+			if(play_again == 1)
+			{
+				sticks = 10;
+				round = 0;
+				continue;
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		printf ("\033[0d\033[2J"); //clear console
 		printf("\nWe have %d\n", sticks);
 		if (round % 2 != 0)
 		{
@@ -32,14 +69,7 @@ int main(int argc, char const *argv[])
 			++round;
 			continue;
 		}
-	}
-	if (round % 2 == 0)
-	{
-		printf("\nSecond player win\n");
-	}
-	else
-	{
-		printf("\nFirst player win\n");
+	
 	}
 	return 0;
 }
